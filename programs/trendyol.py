@@ -1,0 +1,14 @@
+from bs4 import BeautifulSoup
+import requests
+
+url = "https://www.trendyol.com/apple/iphone-14-pro-max-256gb-derin-mor-ithalatci-garantili-p-660468235?boutiqueId=61&merchantId=541969&advertItems=eyJhZHZlcnRJZCI6ImVhMzVjNWVhLTBmN2EtNDgyMi1iYTBiLWJjOTY3OWE5NGI3NyIsInNvcnRpbmdTY29yZSI6MC4xOTY1MTI3ODIyMDExNzA5NCwiYWRTY29yZSI6MC4wNTk1NDkzMjc5Mzk3NDg3NjQsImFkU2NvcmVzIjp7IjEiOjAuMDU5NTQ5MzI3OTM5NzQ4NzY0LCIyIjowLjA1OTU0OTMyNzkzOTc0ODc2NH0sImNwYyI6My4zMDAwMDAwMDAwMDAwMDAzLCJtaW5DcGMiOjAsImVDcGMiOjAuMjEzNDY3OTUwMzcwNjA5MSwiYWR2ZXJ0U2xvdCI6MSwib3JkZXIiOjIsImF0dHJpYnV0ZXMiOiJTdWdnZXN0aW9uX0EsUmVsZXZhbmN5XzEsRmlsdGVyUmVsZXZhbmN5XzEsTGlzdGluZ1Njb3JpbmdBbGdvcml0aG1JZF8xLFNtYXJ0bGlzdGluZ18yLFN1Z2dlc3Rpb25CYWRnZXNfQixQcm9kdWN0R3JvdXBUb3BQZXJmb3JtZXJfQixPcGVuRmlsdGVyVG9nZ2xlXzIsU3VnZ2VzdGlvblN0b3JlQWRzX0IsQmFkZ2VCb29zdF9BLFJGXzEifQ=="
+
+sayfa = requests.get(url)
+
+html_sayfa = BeautifulSoup(sayfa.content,"html.parser")
+
+isim = html_sayfa.find("h1",class_="pr-new-br").getText()
+
+fiyat = html_sayfa.find("span",class_="prc-dsc").getText()
+print(isim)
+print(fiyat)
